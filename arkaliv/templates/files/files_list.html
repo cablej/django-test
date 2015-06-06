@@ -1,15 +1,18 @@
-<html>
-    <head>
-        <title>Arkaliv</title>
-    </head>
-    <body>
-    	<p>Ark<b>aliv</b></p>
-    	<p>Files:</p>
-		{% for file in files %}
-			<div>
-				<p>published: {{ file.published_date }}</p>
-				<h1><a href="#">{{ file.title }}</a></h1>
-				<p>{{ file.text|linebreaks }}</p>
-		{% endfor %}
-    </body>
-</html>
+{% extends "files/base.html" %}
+{% block content %}
+<div class="content container">
+    <div class="row">
+        <div class="col-md-8">
+            {% for file in files %}
+                <div class="file">
+                    <div class="date">
+                        {{ file.published_date }}
+                    </div>
+                    <h1><a href="{% url "arkaliv.views.file_detail" pk=file.pk %}">{{ file.title }}</a></h1>
+                    <p>{{ file.text|linebreaks }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock content %}
