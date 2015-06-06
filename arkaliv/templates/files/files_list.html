@@ -3,8 +3,13 @@
         <title>Arkaliv</title>
     </head>
     <body>
-    	<p>Ark<strong>aliv</strong></p>
-        <p>Hi there!</p>
-        <p>It works!</p>
+    	<p>Ark<b>aliv</b></p>
+    	<p>Files:</p>
+		{% for file in files %}
+			<div>
+				<p>published: {{ file.published_date }}</p>
+				<h1><a href="#">{{ file.title }}</a></h1>
+				<p>{{ file.text|linebreaks }}</p>
+		{% endfor %}
     </body>
 </html>
